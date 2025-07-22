@@ -12,8 +12,8 @@ import (
 type TokenType string
 
 const (
-	TokenTypeAccess TokenType = "access"
-	TokeTypeRefresh TokenType = "refresh"
+	TokenTypeAccess  TokenType = "access"
+	TokenTypeRefresh TokenType = "refresh"
 )
 
 type TokenManager struct {
@@ -33,7 +33,7 @@ func (t TokenManager) MakeAccessToken(userID uuid.UUID) (string, error) {
 
 func (t TokenManager) MakeRefreshToken(userID uuid.UUID) (string, error) {
 	return t.makeJWT(
-		TokeTypeRefresh,
+		TokenTypeRefresh,
 		userID,
 		t.RefreshTokenExpTime,
 		t.TokenSecret,
@@ -49,7 +49,7 @@ func (t TokenManager) ValidateAccessToken(
 func (t TokenManager) ValidateRefreshToken(
 	tokenString string,
 ) (uuid.UUID, error) {
-	return t.validateJWT(tokenString, TokeTypeRefresh)
+	return t.validateJWT(tokenString, TokenTypeRefresh)
 }
 
 func (t TokenManager) validateJWT(

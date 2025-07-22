@@ -7,7 +7,7 @@ import (
 	"github.com/Kharitopolus/Myberries/auth_service/internal/service"
 )
 
-func (h UsersHanlersImpl) Login(w http.ResponseWriter, r *http.Request) {
+func (h UsersHandlersImpl) Login(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	params := LoginReq{}
 	err := decoder.Decode(&params)

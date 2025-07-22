@@ -7,7 +7,7 @@ import (
 	"github.com/Kharitopolus/Myberries/auth_service/internal/service"
 )
 
-func (h UsersHanlersImpl) Register(
+func (h UsersHandlersImpl) Register(
 	w http.ResponseWriter,
 	r *http.Request,
 ) {

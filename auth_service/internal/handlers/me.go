@@ -6,7 +6,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func (h UsersHanlersImpl) Me(
+func (h UsersHandlersImpl) Me(
 	w http.ResponseWriter,
 	r *http.Request,
 ) {

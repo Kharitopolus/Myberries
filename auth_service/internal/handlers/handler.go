@@ -30,7 +30,7 @@ type tokenManager interface {
 	ValidateRefreshToken(tokenString string) (uuid.UUID, error)
 }
 
-type UsersHanlersImpl struct {
+type UsersHandlersImpl struct {
 	db           usersDB
 	pm           passwordManager
 	tm           tokenManager
@@ -41,15 +41,15 @@ func NewUsersHandlersImpl(
 	db usersDB,
 	pm passwordManager,
 	tm tokenManager,
-) UsersHanlersImpl {
-	return UsersHanlersImpl{
+) UsersHandlersImpl {
+	return UsersHandlersImpl{
 		db: db,
 		pm: pm,
 		tm: tm,
 	}
 }
 
-func (h *UsersHanlersImpl) Router(mux *http.ServeMux) {
+func (h *UsersHandlersImpl) Router(mux *http.ServeMux) {
 	am := middleware.AuthMiddleware{
 		ValidateAccessToken: h.tm.ValidateAccessToken,
 	}

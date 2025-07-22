@@ -40,11 +40,11 @@ func Get() Config {
 	if refreshTokenExpTimeHoursStr == "" {
 		log.Fatal("REFRESH_TOKEN_EXP_TIME_HOURS must be set")
 	}
-	acceessTokenExpTimeHours, err := strconv.Atoi(accessTokenExpTimeHoursStr)
+	accessTokenExpTimeHours, err := strconv.Atoi(accessTokenExpTimeHoursStr)
 	if err != nil {
 		log.Fatal("invalid value in REFRESH_TOKEN_EXPT_TIME_HOURS")
 	}
-	refreshToeknExpTimeHours, err := strconv.Atoi(refreshTokenExpTimeHoursStr)
+	refreshTokenExpTimeHours, err := strconv.Atoi(refreshTokenExpTimeHoursStr)
 	if err != nil {
 		log.Fatal("invalid value in REFRESH_TOKEN_EXPT_TIME_HOURS")
 	}
@@ -59,10 +59,10 @@ func Get() Config {
 		RedisUrl:  redisURL,
 		JWTSecret: jwtSecret,
 		AccessTokenExpTimeHours: time.Duration(
-			acceessTokenExpTimeHours,
+			accessTokenExpTimeHours,
 		) * time.Hour,
 		RefreshTokenExpTimeHours: time.Duration(
-			refreshToeknExpTimeHours,
+			refreshTokenExpTimeHours,
 		) * time.Hour,
 	}
 }

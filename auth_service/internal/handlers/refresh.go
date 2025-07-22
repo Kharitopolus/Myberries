@@ -6,7 +6,7 @@ import (
 	"github.com/Kharitopolus/Myberries/auth_service/internal/service"
 )
 
-func (h UsersHanlersImpl) Refresh(
+func (h UsersHandlersImpl) Refresh(
 	w http.ResponseWriter,
 	r *http.Request,
 ) {
