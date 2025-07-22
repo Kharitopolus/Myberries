@@ -26,7 +26,7 @@ func (t TokenManager) MakeAccessToken(userID uuid.UUID) (string, error) {
 	return t.makeJWT(
 		TokenTypeAccess,
 		userID,
-		t.RefreshTokenExpTime,
+		t.AccessTokenExpTime,
 		t.TokenSecret,
 	)
 }

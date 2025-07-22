@@ -44,11 +44,20 @@ func (d DB) GetUserByEmail(
 		return entity.User{}, err
 	}
 
+	var uName string
+	if user.Name.Valid {
+		uName = user.Name.String
+	} else {
+		uName = ""
+	}
+
 	return entity.User{
 		UserID:       user.UserID,
 		Email:        user.Email,
-		Name:         user.Email,
+		Name:         uName,
 		PasswordHash: user.PasswordHash,
+		CreatedAt:    user.CreatedAt,
+		UpdatedAt:    user.UpdatedAt,
 	}, nil
 }
 
