@@ -85,3 +85,12 @@ func (q *Queries) GetUserByID(ctx context.Context, userID uuid.UUID) (User, erro
 	)
 	return i, err
 }
+
+const truncateUsers = `-- name: TruncateUsers :exec
+TRUNCATE TABLE users CASCADE
+`
+
+func (q *Queries) TruncateUsers(ctx context.Context) error {
+	_, err := q.db.ExecContext(ctx, truncateUsers)
+	return err
+}

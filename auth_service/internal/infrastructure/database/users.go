@@ -28,7 +28,7 @@ func (d DB) CreateUser(
 	return entity.User{
 		UserID: user.UserID,
 		Email:  user.Email,
-		Name:   user.Email,
+		Name:   user.Name.String,
 	}, nil
 }
 
@@ -69,6 +69,13 @@ func (d DB) GetUserByID(
 	return entity.User{
 		UserID: user.UserID,
 		Email:  user.Email,
-		Name:   user.Email,
+		Name:   user.Name.String,
 	}, nil
+}
+
+func (d DB) TruncateUsers(ctx context.Context) error {
+	if err := d.sqlc.TruncateUsers(ctx); err != nil {
+		return err
+	}
+	return nil
 }

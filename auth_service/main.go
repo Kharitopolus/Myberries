@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	cfg := config.Get()
+	cfg := config.Get(".env")
 
 	mux := http.NewServeMux()
 
