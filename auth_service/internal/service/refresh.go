@@ -15,6 +15,9 @@ func GetNewAccessTokenByRefresh(
 	refreshToken string,
 ) (string, error) {
 	userID, err := vr(refreshToken)
+	if err != nil {
+		return "", err
+	}
 	accessToken, err := ma(userID)
 
 	return accessToken, err

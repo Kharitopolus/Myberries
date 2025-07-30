@@ -25,7 +25,7 @@ func (h UsersHandlersImpl) Refresh(
 		respondWithError(
 			w,
 			http.StatusUnauthorized,
-			"Couldn't validate token",
+			"Couldn't validate JWT",
 			err,
 		)
 		return

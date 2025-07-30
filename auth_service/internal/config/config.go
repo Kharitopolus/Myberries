@@ -18,8 +18,8 @@ type Config struct {
 	AccessTokenExpTimeHours  time.Duration
 }
 
-func Get() Config {
-	godotenv.Load()
+func Get(filename string) Config {
+	godotenv.Load(filename)
 	appPort := os.Getenv("APP_PORT")
 	if appPort == "" {
 		log.Fatal("APP_PORT must be set")

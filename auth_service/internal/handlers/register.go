@@ -3,6 +3,7 @@ package handlers
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"github.com/Kharitopolus/Myberries/auth_service/internal/service"
 )
@@ -43,6 +44,18 @@ func (h UsersHandlersImpl) Register(
 		rb.Password,
 	)
 	if err != nil {
+		if strings.Contains(
+			err.Error(),
+			`violates unique constraint "users_email_key"`,
+		) {
+			respondWithError(
+				w,
+				http.StatusBadRequest,
+				"email already taken",
+				err,
+			)
+			return
+		}
 		respondWithError(
 			w,
 			http.StatusInternalServerError,
